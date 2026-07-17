@@ -1,0 +1,3 @@
+# ADR
+
+Placeholder for architecture decision records.
