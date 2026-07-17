@@ -7,14 +7,16 @@ from collections.abc import Iterable, Mapping
 from types import MappingProxyType
 from typing import TYPE_CHECKING
 
-from python_exchange_integration_runtime.errors import AdapterConfigurationError
-from python_exchange_integration_runtime.errors import EndpointResolutionError
+from python_exchange_integration_runtime.errors import (
+    AdapterConfigurationError,
+    EndpointResolutionError,
+)
 from python_exchange_integration_runtime.exchange_endpoint import ExchangeEndpoint
 from python_exchange_integration_runtime.signing import RequestSigner
 
 if TYPE_CHECKING:
-    from python_http_runtime import HttpRequest
-    from python_http_runtime import HttpResponse
+    from python_http_runtime import HttpRequest, HttpResponse
+
     from python_exchange_integration_runtime.exchange_request import ExchangeRequest
     from python_exchange_integration_runtime.exchange_response import ExchangeResponse
 

@@ -7,8 +7,7 @@ from types import MappingProxyType
 
 from python_exchange_integration_runtime.errors import ExchangeResponseError
 from python_exchange_integration_runtime.exchange_endpoint import ExchangeEndpoint
-from python_exchange_integration_runtime.types import HeaderMapping
-from python_exchange_integration_runtime.types import PayloadType
+from python_exchange_integration_runtime.types import HeaderMapping, PayloadType
 
 
 @dataclass(slots=True, frozen=True, kw_only=True)
@@ -74,7 +73,9 @@ def _normalize_headers(headers: HeaderMapping) -> HeaderMapping:
 
     for header_name, header_value in headers.items():
         if not isinstance(header_name, str):
-            raise ExchangeResponseError("Exchange response header names must be strings.")
+            raise ExchangeResponseError(
+                "Exchange response header names must be strings."
+            )
 
         if not isinstance(header_value, str):
             raise ExchangeResponseError(

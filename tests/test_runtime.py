@@ -5,19 +5,18 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 import pytest
-
-from python_http_runtime import HttpRequest
-from python_http_runtime import HttpResponse
-from python_http_runtime import HttpRuntime
-from python_http_runtime import RuntimeSettings
+from python_http_runtime import HttpRequest, HttpResponse, HttpRuntime, RuntimeSettings
 from python_http_runtime.errors import HttpTransportError
 from python_http_runtime.testing import MockTransport
+
 from python_exchange_integration_runtime.adapter import ExchangeAdapter
-from python_exchange_integration_runtime.errors import AdapterConfigurationError
-from python_exchange_integration_runtime.errors import EndpointResolutionError
-from python_exchange_integration_runtime.errors import ExchangeRequestError
-from python_exchange_integration_runtime.errors import ExchangeResponseError
-from python_exchange_integration_runtime.errors import RequestSigningError
+from python_exchange_integration_runtime.errors import (
+    AdapterConfigurationError,
+    EndpointResolutionError,
+    ExchangeRequestError,
+    ExchangeResponseError,
+    RequestSigningError,
+)
 from python_exchange_integration_runtime.exchange_endpoint import ExchangeEndpoint
 from python_exchange_integration_runtime.exchange_request import ExchangeRequest
 from python_exchange_integration_runtime.exchange_response import ExchangeResponse
@@ -367,7 +366,10 @@ def test_runtime_rejects_invalid_http_request_output_type() -> None:
 
     with pytest.raises(
         ExchangeRequestError,
-        match="Exchange adapter build_http_request\\(\\) must return an HttpRequest instance.",
+        match=(
+            "Exchange adapter build_http_request\\(\\) must return an "
+            "HttpRequest instance."
+        ),
     ):
         runtime.execute(request)
 

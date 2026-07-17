@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from python_http_runtime import HttpRequest
+
     from python_exchange_integration_runtime.exchange_request import ExchangeRequest
 
 

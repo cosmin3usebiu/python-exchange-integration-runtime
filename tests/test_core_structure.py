@@ -6,17 +6,18 @@ from dataclasses import FrozenInstanceError
 from types import MappingProxyType
 
 import pytest
-
-from python_http_runtime import HttpRuntime
-from python_http_runtime import RuntimeSettings
+from python_http_runtime import HttpRuntime, RuntimeSettings
 from python_http_runtime.testing import MockTransport
+
 from python_exchange_integration_runtime.adapter import ExchangeAdapter
-from python_exchange_integration_runtime.errors import AdapterConfigurationError
-from python_exchange_integration_runtime.errors import EndpointResolutionError
-from python_exchange_integration_runtime.errors import ExchangeRequestError
-from python_exchange_integration_runtime.errors import ExchangeResponseError
-from python_exchange_integration_runtime.errors import ExchangeRuntimeError
-from python_exchange_integration_runtime.errors import RequestSigningError
+from python_exchange_integration_runtime.errors import (
+    AdapterConfigurationError,
+    EndpointResolutionError,
+    ExchangeRequestError,
+    ExchangeResponseError,
+    ExchangeRuntimeError,
+    RequestSigningError,
+)
 from python_exchange_integration_runtime.exchange_endpoint import ExchangeEndpoint
 from python_exchange_integration_runtime.exchange_request import ExchangeRequest
 from python_exchange_integration_runtime.exchange_response import ExchangeResponse

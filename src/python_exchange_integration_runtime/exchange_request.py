@@ -7,12 +7,14 @@ from types import MappingProxyType
 
 from python_exchange_integration_runtime.errors import ExchangeRequestError
 from python_exchange_integration_runtime.exchange_endpoint import ExchangeEndpoint
-from python_exchange_integration_runtime.types import HeaderMapping
-from python_exchange_integration_runtime.types import PathParameterMapping
-from python_exchange_integration_runtime.types import PathParameterValue
-from python_exchange_integration_runtime.types import PayloadType
-from python_exchange_integration_runtime.types import QueryParameterMapping
-from python_exchange_integration_runtime.types import QueryParameterValue
+from python_exchange_integration_runtime.types import (
+    HeaderMapping,
+    PathParameterMapping,
+    PathParameterValue,
+    PayloadType,
+    QueryParameterMapping,
+    QueryParameterValue,
+)
 
 
 @dataclass(slots=True, frozen=True, kw_only=True)
@@ -181,7 +183,10 @@ def _normalize_timeout_seconds(timeout_seconds: float | None) -> float | None:
     if timeout_seconds is None:
         return None
 
-    if isinstance(timeout_seconds, bool) or not isinstance(timeout_seconds, (int, float)):
+    if isinstance(timeout_seconds, bool) or not isinstance(
+        timeout_seconds,
+        (int, float),
+    ):
         raise ExchangeRequestError(
             "Exchange request timeout must be an int, float, or None."
         )
