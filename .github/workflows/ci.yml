@@ -11,6 +11,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          path: python-exchange-integration-runtime
+
+      - name: Checkout python-http-runtime
+        uses: actions/checkout@v4
+        with:
+          repository: cosmin3usebiu/python-http-runtime
+          path: python-http-runtime
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -20,7 +28,9 @@ jobs:
       - name: Install package and test dependencies
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -e ".[dev]"
+          python -m pip install -e ./python-http-runtime
+          python -m pip install -e "./python-exchange-integration-runtime[dev]"
 
       - name: Run tests
+        working-directory: python-exchange-integration-runtime
         run: pytest
