@@ -36,8 +36,9 @@ class ExchangeResponse:
         ExchangeResponseError: If response metadata is structurally invalid.
 
     Usage Notes:
-        Response interpretation behavior is intentionally deferred to a later
-        milestone.
+        Construction normalizes and validates response metadata. Adapter
+        implementations own payload interpretation; this model does not expose
+        higher-level business-domain objects.
     """
 
     endpoint: ExchangeEndpoint

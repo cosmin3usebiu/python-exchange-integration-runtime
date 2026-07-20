@@ -1,4 +1,4 @@
-"""Internal signing contracts for exchange request execution."""
+"""Signing extension contracts for exchange request execution."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ if TYPE_CHECKING:
 
 
 class RequestSigner(ABC):
-    """Define the internal contract for immutable request signing.
+    """Define the public submodule contract for immutable request signing.
 
     Purpose:
         Standardize how adapters optionally transform an unsigned ``HttpRequest``
@@ -22,14 +22,15 @@ class RequestSigner(ABC):
         This abstract interface does not define constructor parameters.
 
     Attributes:
-        Concrete implementations own signing-specific state and credentials.
+        Concrete implementations supplied by adapter code own any
+        signing-specific state.
 
     Raises:
-        Concrete implementations may later raise signing-related exceptions.
+        Concrete implementations may raise signing-related exceptions.
 
     Usage Notes:
-        This contract is internal. It is not part of the repository's public
-        root API.
+        This contract is a public submodule extension point. It is not exported
+        from the package root and does not provide concrete signing algorithms.
     """
 
     @abstractmethod

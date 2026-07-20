@@ -1,4 +1,4 @@
-"""Exception hierarchy for the exchange integration runtime."""
+"""Public submodule error contracts for the exchange integration runtime."""
 
 from __future__ import annotations
 
@@ -23,7 +23,8 @@ class ExchangeRuntimeError(Exception):
 
     Usage Notes:
         More specific configuration, resolution, signing, request, and response
-        failures derive from this base type.
+        failures derive from this base type. Repository-native errors are
+        public submodule contracts and are not package-root exports.
     """
 
 
@@ -31,8 +32,8 @@ class AdapterConfigurationError(ExchangeRuntimeError):
     """Describe invalid adapter configuration or collaborator state.
 
     Purpose:
-        Reserve a category for invalid adapter setup, incompatible
-        collaborators, or misconfigured runtime construction state.
+        Represent invalid adapter setup, incompatible collaborators, or
+        misconfigured runtime construction state.
 
     Parameters:
         This exception accepts the standard ``Exception`` initialization
@@ -42,8 +43,8 @@ class AdapterConfigurationError(ExchangeRuntimeError):
         No additional public attributes are defined.
 
     Raises:
-        This exception will later be raised when runtime construction or
-        execution detects invalid adapter-level configuration.
+        Runtime construction and execution raise this exception when
+        adapter-level configuration is invalid.
 
     Usage Notes:
         Adapter configuration failures are distinct from endpoint, signing, and
@@ -55,8 +56,8 @@ class EndpointResolutionError(ExchangeRuntimeError):
     """Describe invalid or unsupported endpoint resolution.
 
     Purpose:
-        Reserve a category for unsupported endpoints, invalid endpoint
-        ownership, or other endpoint-resolution failures at runtime boundaries.
+        Represent unsupported endpoints, invalid endpoint ownership, or other
+        endpoint-resolution failures at runtime boundaries.
 
     Parameters:
         This exception accepts the standard ``Exception`` initialization
@@ -66,8 +67,8 @@ class EndpointResolutionError(ExchangeRuntimeError):
         No additional public attributes are defined.
 
     Raises:
-        This exception will later be raised when adapters reject or cannot
-        resolve an endpoint.
+        Adapter and runtime boundaries raise this exception when endpoint
+        resolution fails.
 
     Usage Notes:
         Endpoint failures are modeled separately from request signing and
@@ -90,8 +91,8 @@ class RequestSigningError(ExchangeRuntimeError):
         No additional public attributes are defined.
 
     Raises:
-        This exception will later wrap signer contract violations and
-        exchange-specific signing failures.
+        Runtime signing boundaries raise this exception for signer contract
+        violations and signing failures.
 
     Usage Notes:
         Original signing exceptions should be preserved as chained context.
@@ -102,8 +103,8 @@ class ExchangeRequestError(ExchangeRuntimeError):
     """Describe failures while constructing or dispatching exchange requests.
 
     Purpose:
-        Reserve a category for invalid exchange request execution boundaries
-        that are not endpoint-resolution failures and not response failures.
+        Represent invalid exchange request execution boundaries that are not
+        endpoint-resolution failures and not response failures.
 
     Parameters:
         This exception accepts the standard ``Exception`` initialization
@@ -113,8 +114,8 @@ class ExchangeRequestError(ExchangeRuntimeError):
         No additional public attributes are defined.
 
     Raises:
-        This exception will later be raised when request construction or
-        transport delegation violates runtime contracts.
+        Adapter and runtime boundaries raise this exception when request
+        construction or transport delegation violates runtime contracts.
 
     Usage Notes:
         Request failures are distinct from signing and remote response
@@ -126,8 +127,8 @@ class ExchangeResponseError(ExchangeRuntimeError):
     """Describe failures while interpreting exchange HTTP responses.
 
     Purpose:
-        Reserve a category for malformed, unsupported, or contract-violating
-        exchange responses surfaced by adapters.
+        Represent malformed, unsupported, or contract-violating exchange
+        responses surfaced by adapters.
 
     Parameters:
         This exception accepts the standard ``Exception`` initialization
@@ -137,8 +138,9 @@ class ExchangeResponseError(ExchangeRuntimeError):
         No additional public attributes are defined.
 
     Raises:
-        This exception will later be raised when adapters cannot interpret raw
-        HTTP responses into a stable ``ExchangeResponse`` boundary object.
+        Adapter and runtime boundaries raise this exception when raw HTTP
+        responses cannot be interpreted into a stable ``ExchangeResponse``
+        boundary object.
 
     Usage Notes:
         Response failures are intentionally modeled separately from transport

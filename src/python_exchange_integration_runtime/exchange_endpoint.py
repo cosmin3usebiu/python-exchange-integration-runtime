@@ -36,8 +36,9 @@ class ExchangeEndpoint:
             invalid.
 
     Usage Notes:
-        Validation and metadata normalization are intentionally deferred to a
-        later milestone.
+        Construction normalizes and validates endpoint metadata. Endpoint
+        catalogs and concrete exchange definitions are supplied by adapters,
+        not by this package.
     """
 
     name: str

@@ -45,8 +45,9 @@ class ExchangeRequest:
         ExchangeRequestError: If request metadata is structurally invalid.
 
     Usage Notes:
-        Validation and runtime normalization are intentionally deferred to a
-        later milestone.
+        Construction normalizes and validates request metadata. The model stays
+        HTTP-oriented and does not represent market-data, order, account, or
+        trading-domain behavior.
     """
 
     endpoint: ExchangeEndpoint

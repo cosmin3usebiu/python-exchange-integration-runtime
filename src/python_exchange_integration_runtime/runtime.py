@@ -26,9 +26,8 @@ class ExchangeRuntime:
     """Coordinate exchange request execution through a generic workflow.
 
     Purpose:
-        Reserve the public runtime object that will later orchestrate endpoint
-        ownership checks, request construction, optional signing, lower-level
-        HTTP execution, and response interpretation.
+        Orchestrate endpoint ownership checks, request construction, optional
+        signing, lower-level HTTP execution, and response interpretation.
 
     Parameters:
         http_runtime: Lower-level HTTP runtime used for transport execution.
@@ -39,11 +38,12 @@ class ExchangeRuntime:
         adapter: Exchange-specific behavior provider.
 
     Raises:
-        No additional exceptions are raised during skeleton construction.
+        AdapterConfigurationError: If runtime collaborators are invalid.
 
     Usage Notes:
         This runtime is an orchestrator only. Exchange-specific behavior
-        belongs to the adapter and signing contracts.
+        belongs to adapters and signer implementations supplied outside the
+        runtime.
     """
 
     http_runtime: HttpRuntime
